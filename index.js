@@ -600,10 +600,12 @@ app.post("/api/stripe/update-email", express.json(), async (req, res) => {
 
 app.use(express.json());
 app.use("/api/email", emailVerificationRoutes);
-app.get("/api/test", (req, res) => {
-  res.send("hi");
+app.get("/", (req, res) => {
+  res.send("server running...");
 });
 
 // ✅ Start Express Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running on port http://localhost:${PORT}`)
+);
