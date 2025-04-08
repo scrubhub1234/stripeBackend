@@ -73,19 +73,23 @@ app.post(
             return res.status(400).json({ error: "UID not found in metadata" });
           }
           console.log("CREATED SUB", subscription.items.data[0]);
+          console.log("START", subscription.items.data[0].current_period_start);
+          console.log("END", subscription.items.data[0].current_period_end);
 
+          const currentPeriodStart = new Date(
+            subscription.items.data[0].current_period_start * 1000
+          );
+          const currentPeriodEnd = new Date(
+            subscription.items.data[0].current_period_end * 1000
+          );
           await updateDoc(doc(db, "subscriptions", uid), {
             status: subscription.status,
             planId: subscription.items.data[0].price.id,
             subscriptionId: subscription.id,
             customerId: customerId, // Store the Stripe customer ID
             createdAt: new Date(subscription.created * 1000),
-            currentPeriodStart: new Date(
-              subscription.items.data[0].current_period_start * 1000
-            ),
-            currentPeriodEnd: new Date(
-              subscription.items.data[0].current_period_end * 1000
-            ),
+            currentPeriodStart: currentPeriodStart,
+            currentPeriodEnd: currentPeriodEnd,
             // currentPeriodStart: new Date(
             //   subscription.current_period_start * 1000
             // ),
