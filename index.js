@@ -72,6 +72,7 @@ app.post(
             );
             return res.status(400).json({ error: "UID not found in metadata" });
           }
+          console.log("CREATED SUB", subscription.items.data[0]);
 
           await updateDoc(doc(db, "subscriptions", uid), {
             status: subscription.status,
