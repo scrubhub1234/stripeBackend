@@ -82,6 +82,10 @@ app.post(
           const currentPeriodEnd = new Date(
             subscription.items.data[0].current_period_end * 1000
           );
+
+          console.log("START", currentPeriodStart);
+          console.log("End", currentPeriodEnd);
+
           await updateDoc(doc(db, "subscriptions", uid), {
             status: subscription.status,
             planId: subscription.items.data[0].price.id,
