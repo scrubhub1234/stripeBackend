@@ -80,9 +80,15 @@ app.post(
             customerId: customerId, // Store the Stripe customer ID
             createdAt: new Date(subscription.created * 1000),
             currentPeriodStart: new Date(
-              subscription.current_period_start * 1000
+              subscription.items.data[0].current_period_start * 1000
             ),
-            currentPeriodEnd: new Date(subscription.current_period_end * 1000),
+            currentPeriodEnd: new Date(
+              subscription.items.data[0].current_period_end * 1000
+            ),
+            // currentPeriodStart: new Date(
+            //   subscription.current_period_start * 1000
+            // ),
+            // currentPeriodEnd: new Date(subscription.current_period_end * 1000),
             cancelAtPeriodEnd: subscription.cancel_at_period_end,
           });
 
