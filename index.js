@@ -339,7 +339,7 @@ app.post(
 
       // 🔥 Update subscription in Firestore
       await updateDoc(doc(db, "subscriptions", uid), {
-        status: "cancelling",
+        // status: cancelledSubscription.status,
         cancelAtPeriodEnd: true,
         cancelledAt: new Date(),
         // currentPeriodEnd: new Date(
