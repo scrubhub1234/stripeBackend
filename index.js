@@ -342,9 +342,9 @@ app.post(
         status: "cancelling",
         cancelAtPeriodEnd: true,
         cancelledAt: new Date(),
-        currentPeriodEnd: new Date(
-          cancelledSubscription.items.data[0].current_period_end * 1000 * 1000
-        ),
+        // currentPeriodEnd: new Date(
+        //   cancelledSubscription.items.data[0].current_period_end * 1000 * 1000
+        // ),
       });
 
       console.log("✅ Subscription cancelled successfully:", subscriptionId);
@@ -355,9 +355,9 @@ app.post(
           "Subscription will be cancelled at the end of the billing period",
         data: {
           status: "cancelling",
-          currentPeriodEnd: new Date(
-            cancelledSubscription.current_period_end * 1000
-          ),
+          // currentPeriodEnd: new Date(
+          //   cancelledSubscription.current_period_end * 1000
+          // ),
         },
       });
     } catch (error) {
