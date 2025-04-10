@@ -343,7 +343,7 @@ app.post(
         cancelAtPeriodEnd: true,
         cancelledAt: new Date(),
         currentPeriodEnd: new Date(
-          cancelledSubscription.current_period_end * 1000
+          cancelledSubscription.items.data[0].current_period_end * 1000 * 1000
         ),
       });
 
@@ -425,9 +425,9 @@ app.post(
         message: "Subscription has been successfully reactivated",
         data: {
           status: reactivatedSubscription.status,
-          currentPeriodEnd: new Date(
-            reactivatedSubscription.current_period_end * 1000
-          ),
+          // currentPeriodEnd: new Date(
+          //   reactivatedSubscription.current_period_end * 1000
+          // ),
         },
       });
     } catch (error) {
